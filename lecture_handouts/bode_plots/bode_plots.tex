@@ -1,0 +1,104 @@
+\documentclass[10pt]{report}
+\usepackage{epsf}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{palatino}
+\usepackage[dvips]{graphics}
+\usepackage{fancyhdr}
+\parindent 0in
+\parskip 1ex
+\oddsidemargin  0in
+\evensidemargin 0in
+\textheight 8.5in
+\textwidth 6.5in
+\topmargin -0.25in
+
+\input{../lecture_handout_header}
+
+\begin{document}
+
+% The next 7 lines were used when printing this section as a handout:
+\setcounter{page}{1}
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\begin{center}
+\Large{\textbf{Bode Plots}}
+\normalsize
+\end{center}
+
+
+Bode plots, named after Hendrick Bode, are log-log plots of magnitude vs.\ frequency and phase
+vs.\ frequency. 
+
+Specifically, a \textbf{magnitude} Bode plots presents
+decibels magnitude vs.\ log frequency:
+
+$20 \log_{10} |\frac{v_{out}}{v_{in}}(\omega)|$ vs.\
+$\log_{10}(\omega / 2 \pi)$
+
+A \textbf{phase} Bode plot plots the phase of $H(\omega)$ vs.\ log frequency.
+
+The \textbf{logarithmic scale} allows presentation of a wide range of
+frequency, as well as transforming the curves into a more readable
+linear format. (Note that the frequency scale never reaches zero.)
+
+\textbf{Principles:}
+
+For a given transfer function $H(\omega)$:
+\begin{itemize}
+\item When $|H(\omega)|~\alpha~\omega$, the slope of the Bode plot $= +20$
+dB/decade.
+\item When $|H(\omega)|~\alpha~1/\omega$, the slope of the Bode plot $= -20$
+dB/decade.
+
+\item Each $\omega$ or $j\omega$ in the numerator contributes $+20$
+dB/decade.
+\item Each $\omega$ or $j\omega$ in the denominator contributes $-20$
+dB/decade.
+
+\item Each term of form $1 + j \omega / \omega_c$ in the numerator is called
+a \textit{zero}, and contributes $= +20$
+dB/decade magnitude and a $+\pi/2$ phase shift above $\omega_c$.
+
+\item Each term of form $1 + j \omega / \omega_c$ in the denominator is called
+a \textit{pole}, and contributes $= -20$
+dB/decade magnitude and a $-\pi/2$ phase shift above $\omega_c$.
+\end{itemize}
+
+\textbf{To sketch the Bode plots,} evaluate the transfer function at
+the extremes of $\omega=0,~\omega=\infty $ and at ech cut-off
+frequency(s) $\omega_{c}$.
+
+Connect these points with line segments. 
+
+At $\omega_{c}$, $|H(\omega)|$ will be down 3 dB relative to the
+pass-band, while the phase plot passes through $\pm 45$ degrees
+relative to the pass-band.
+
+\textbf{For example}, a low-pass filter has the transfer function:
+\begin{equation}
+\begin{split}
+\frac{v_{out}}{v_{in}}(\omega)&= -\frac{Z_{f}}{Z_{i}}=
+-\frac{R_{f}||C}{R_{i}}\\ &= -\frac{\frac{(R_{f}/j\omega
+C)}{(1/j\omega C)+R_{f}}}{R_{i}}\\ &= -\frac{R_{f}}{(1+j\omega
+R_{f}C)R_{i}} = -\frac{R_{f}}{R_{i}}\frac{1}{1+j\omega R_{f}C}
+\end{split}
+\end{equation}
+At low frequencies, $|\frac{v_{out}}{v_{in}}(\omega)| \approx
+\frac{R_{f}}{R_{i}}$, while at high frequencies
+$|\frac{v_{out}}{v_{in}}(\omega)| \approx \frac{1}{\omega
+R_{i}C}$.
+
+The corner frequency will be where $\frac{R_{f}}{R_{i}}=
+\frac{1}{\omega R_{i}C}$, or $\omega = 1/R_{f}C$.
+
+Note that Bode plots are typically drawn showing $\pm 90$ degrees.
+However, we consider phase to span 360 degrees, which is more correct
+and also indicates the 180 degree phase shift.
+
+Generally, the order of the filter, indicated in simple circuits by
+the number of reactive components \textit{active in a particular
+frequency band}, relates directly to the slope of the Bode plot in the
+cutoff region or regions.
+
+\end{document}
