@@ -1,0 +1,178 @@
+\documentclass[11pt]{report}
+\usepackage{epsf}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{palatino}
+\usepackage[dvips]{graphics}
+\usepackage{fancyhdr}
+\parindent 0in
+\parskip 1ex
+\oddsidemargin  0in
+\evensidemargin 0in
+\textheight 8.5in
+\textwidth 6.5in
+\topmargin -0.25in
+
+\input{../lecture_handout_header}
+
+\begin{document}
+
+% The next 7 lines were used when printing this section as a handout:
+\setcounter{page}{1}
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\begin{center}
+\Large{\textbf{The Complex Exponential}}
+\normalsize
+
+\end{center}
+
+
+We engineers like to describe signals as sinusoids, i.e.\
+in terms of sine and cosine functions.  Why is this? 
+For a number of reasons, including that:
+\begin{itemize}
+\item these functions efficiently describe the natural behavior
+of a variety of natural and electrical systems of interest,
+\item we utilize Fourier methods which allow us to express
+any physically realizable signal as a weighted combination of sinusoids, and
+\item we utilize Fourier methods to describe LSI (linear,
+shift-invariant) systems, and by extension, to describe how such a
+system responds to any physically realizable signal. The object is to
+predict the output given some input.
+\end{itemize}
+A ``generalized'' sinusoid of amplitude $A$ and phase $\theta$ has the form:
+\begin{equation}
+f(t) = A \cos(\omega t + \theta)
+\label{eq:trig}
+\end{equation}
+This seems like a perfectly good expression that is familiar to us
+all.\\
+
+\textbf{Why mess with it?} 
+
+Because trigonometric forms such as that in Equation \ref{eq:trig}
+become quite inconvenient when you start performing mathematical
+transformations on them! Transformations of interest include advancing
+or retarding the phase, integrating, differentiating, multiplying by
+another signal, and of course, the Fourier Transform. Trigonometric
+identities will take you only so far.
+
+To avoid these difficulties, we adopt notation using the complex exponential,
+$e^{j\omega t}$. By adopting a more complicated description of the
+signal, we can actually make the mathematical transformations of
+interest \textit{much} easier.
+
+We recall Euler's Law, and use it to construct a ``generalized''
+complex exponential:
+\begin{equation}
+\begin{split}
+e^{j\phi} &= \cos\phi + j\sin\phi\\
+Ae^{j(\omega t + \theta)} &=A[\cos(\omega t + \theta) + j\sin(\omega t + \theta)]\\
+\end{split}
+\end{equation}
+The complication we have accepted in adopting this notation is that we
+have converted a real signal into a complex signal. The imaginary part
+has been introduced as a mathematical device with which to efficiently 
+\textit{keep track of phase}. 
+
+In describing the response of some circuit to a real sinusoidal input
+signal, we begin by describing the input signal in complex notation,
+perform operations on this signal to reflect the circuit's response, and
+then solve for the system output by taking the real part of the
+result.
+
+The generalized complex exponential itself can be interpreted to
+represent a complex vector rotating about the origin having length $A$
+and instantaneous angle $\theta$ with respect to the real, positive
+axis, as shown in Fig.~\ref{fig:phasor}.
+\begin{figure}[h]
+\centering
+\epsfxsize=2.0in
+\epsfbox{phasor.eps}
+\caption{A phasor is a complex number that describes a particular
+sinusoidal function represented with the complex exponential
+$e^{j\omega t}$.  The phasor has magnitude $A$ and phase $\theta$. The
+real component of this phasor is $Re[Ae^{j\theta}] = A \cos\theta$,
+while the imaginary component is $Im[Ae^{j\theta}] = A \sin\theta$.
+The generalized complex exponential function itself is of the form
+$Ae^{j\theta}e^{j\omega t}$. At time $t=0$, the phasor diagram shows
+the instantaneous value of the complex exponential function.}
+\label{fig:phasor}
+\end{figure}
+
+The following identities follow:
+\begin{equation}
+\begin{split}
+Re[Ae^{j\theta}] &= A \cos\theta\\
+Im[Ae^{j\theta}] &= A \sin\theta\\
+\theta &= \arctan\frac{Im[Ae^{j\theta}]}{Re[Ae^{j\theta}]}\\
+|A| &= \sqrt{Re[Ae^{j\theta}]^2+Im[Ae^{j\theta}]^2}\\
+e^{j0} = 1,~~~&~~~e^{j\pi/2} = j\\
+e^{-j\pi/2} = -j,~~~&~~~e^{j\pi} = e^{-j\pi} =-1\\
+\end{split}
+\end{equation}
+Mathematical manipulations include:
+\begin{equation}
+\begin{split}
+\text{Phase shift of } \phi \text{ radians:~~~~~}& e^{j\phi}\cdot
+Ae^{j(\omega t + \theta)} = Ae^{j(\omega t + \theta+\phi)}\\
+\text{Differentiation:~~~~~}&
+\frac{d}{dt}[Ae^{j(\omega t + \theta)}] = j\omega Ae^{j[\omega t + \theta]}\\
+\end{split}
+\end{equation}
+\textbf{Example:} If a voltage function of the form $v_{C}(t) =
+Re[Ae^{j\omega t}]$ is applied across a capacitor of value $C$, what is
+the current through the capacitor?
+\begin{equation}
+\begin{split}
+i_{C}(t) &= Re\big{[}C\frac{d}{dt}[Ae^{j\omega t}]\big{]}\\
+\therefore ~~~~i_{C}(t) &= Re\big{[}j\omega C Ae^{j\omega t} = e^{j \pi/2}\omega C Ae^{j\omega t}\big{]}
+~~~~(\text{current leads voltage by }90^\circ) \\
+&= Re\bigg{[}Ae^{j\omega t} / \frac{1}{j\omega C}\bigg{]}\\
+\therefore ~~~~i_{C}(t)&= Re\bigg{[}\frac{Ae^{j\omega t}}{Z_C}\bigg{]}~~~~\text{(Ohm's Law!)} 
+\end{split}
+\end{equation}
+
+You \textbf{must} be comfortable intra-converting the sin/cosine,
+complex exponential, polar, and complex number forms of a signal at some time
+$t$.
+
+The complex exponential times a phasor has the forms
+$Ae^{j\theta}e^{j\omega t}$, $Ae^{j(\omega t + \theta)}$, and
+$A[\cos(\omega t+\theta) + j\sin(\omega t+\theta)]$.
+
+The complex phasor can also be represented in \textbf{polar form} $A\angle
+\theta$ or \textbf{rectangular form} $A(\cos\theta + j \sin\theta)$.
+
+\textbf{Recall} that for complex numbers $A$ and $B$:
+\begin{equation}
+\begin{split}
+|AB| = |A||B|~~&~~|A/B| = |A|/|B|\\
+\angle AB = \angle A + \angle B~~&~~\angle A/B = \angle A - \angle B\\
+\end{split}
+\end{equation}
+
+These identities are very useful in simplifying the magnitude and
+phase of a complicated transfer function.
+
+\textbf{Note} that a $\pm 180^\circ$ or $\pm \pi$ phase shift
+corresponds to a sign inversion.
+
+\textbf{Note} that when using a calculator, the $\arctan$ function
+only gives correct phases in the first and fourth quadrants, i.e.\ for 
+a positive real part.  If the real part is negative, you must
+shift the 1st or 4th quadrant answer by $180^\circ$ to get the correct
+answer.
+
+\textbf{Note} that Ohm's law and other circuit analysis principles can be applied to circuits with capacitors and
+inductors using the complex exponential form of signals and the
+complex impedance description of these components.
+
+\textbf{Common mistakes} include forgetting to convert between radians and
+degrees (related by the factor $180/\pi$), and between frequency
+measured in radians/s and Hertz (related by the factor $1/(2 \pi)$).
+
+\clearpage
+
+\end{document}
