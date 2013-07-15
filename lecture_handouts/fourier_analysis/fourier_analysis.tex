@@ -1,0 +1,463 @@
+\documentclass[11pt]{report}
+\usepackage{epsf}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{palatino}
+\usepackage[dvips]{graphics}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\parindent 0in
+\parskip 1ex
+\oddsidemargin  0in
+\evensidemargin 0in
+\textheight 8.5in
+\textwidth 6.5in
+\topmargin -0.25in
+
+\input{../lecture_handout_header}
+
+\begin{document}
+
+
+% The next 7 lines were used when printing this section as a handout:
+\setcounter{page}{1}
+\setcounter{equation}{0}
+\setcounter{figure}{0}
+\begin{center}
+\Large{\textbf{Fourier Analysis}}
+\normalsize
+\end{center}
+
+\section*{The Fourier Transform}
+
+\textit{Recall} that the Laplace transform is a powerful analysis tool
+that allows the conversion of information between two different
+domains, i.e.\ the \text{time} and \text{frequency} domains.
+
+The Fourier transform is another such mathematical
+transformation, operating on signals of the form $Ae^{j(\omega t +\theta)}$ and combinations thereof.
+
+Although these types of signals represent just
+a subset of what can be described with the Laplace transform, this
+subset's importance makes the Fourier transform a ubiquitous analysis
+method. 
+
+While not every mathematical function has a Fourier transform, any
+physically realizable signal \textit{does}.  That's good enough for us!
+
+\subsubsection*{So what?}
+
+There are a number of reasons this is important, although they may not
+be apparent until you begin applying the transform in practical
+situations.
+
+Some important mathematical operations are easier to perform in the
+frequency domain.
+
+\begin{itemize}
+\item The significance of various components of a signal may be more obvious
+in the frequency domain.
+\item The Fourier transform converts a signal into time domain to its
+equivalent in the frequency domain.
+\end{itemize}
+
+Why are we interested in the frequency domain?
+
+\begin{enumerate}
+\item If we are interested in the frequency content of a signal, the
+frequency domain representation is an intuitive way of display this
+information.
+\item Some useful signal processing operations are much easier to perform
+in the frequency domain. This applies both to intuition and to
+processing efficiency, through the development of what are known as
+\textit{fast Fourier transform} (FFT)
+algorithms.
+\end{enumerate}
+
+The Fourier transform and its inverse, while perhaps sounding
+intimidating, are simply integrals:
+
+\begin{equation}
+\begin{split}
+G(\omega) =& \int^{\infty}_{-\infty}g(t)\exp(-j\omega t)~ dt\\
+g(t) =& \frac{1}{2\pi}\int^{\infty}_{-\infty}G(\omega)\exp(j\omega t)~ d\omega\\
+\end{split}
+\end{equation}
+
+These equations represent the decomposition and reconstruction of a
+signal into components of the form  $Ae^{j(\omega t + \theta)}$, known
+as the transform's \textit{basis functions}.
+
+\subsubsection*{What the \%*\$\&\# does all this mean?}
+
+The forward transform answers a pair of questions:
+
+\textit{Is a sinusoidal wave of a particular frequency 
+$\omega$ present in a signal?}
+
+\textit{If so, with what amplitude $A$ and phase $\theta$?}
+
+\begin{itemize}
+\item A particular solution of the forward Fourier transform integral
+is thus a
+single complex number for a single frequency.  
+
+\item This solution is the complex coefficient $Ae^{j \theta}$ of the complex exponential $e^{j\omega t}$.
+
+\item To determine the total content of a signal i.e.\ all of its frequency
+components, this integral must be repeatedly calculated, at every frequency!
+
+\item Fortunately, if the signal can be described in symbolic form (as
+a general equation), its
+transform can often be likewise expressed in symbolic form.
+\end{itemize}
+
+\subsubsection*{How does the integral work?}
+
+The \textbf{forward} Fourier transform utilizes an important
+characteristic of signals of the form $e^{j\omega}$ known as \textit{orthogonality}:
+
+\begin{equation*}
+G(\omega)= \int^{\infty}_{-\infty}\exp(j\omega_1
+t)\exp(-j\omega_2 t)~dt = 2\pi \text{ when }\omega_1=\omega_2, 0
+\text{ otherwise}.
+\end{equation*}
+
+\begin{itemize}
+\item In non-technical terms, the integral over all time of the
+conjugate product of complex exponentials at two
+different frequencies is always zero.
+
+\item Thus, when computing the Fourier integral at a particular frequency,
+the component of the signal at that frequency will be ``sifted'' out
+and its amplitude and phase identified.
+
+\item Analyzing a signal with the Fourier transform is akin to describing a
+``recipe'' for the signal, listing the magnitude and phase of components of the signal as a
+function of frequency.
+
+\item In this light, the \textit{inverse} Fourier transform can be seen as taking
+that recipe and using it to build up the original signal again. 
+
+\item A particular solution of the inverse integral provides the value of
+the signal in question \textit{at a single time}.
+
+\end{itemize}
+% \textit{This would be a good time to review the complex exponential
+% and Euler's formula, which is required to solve the Fourier transform
+% of the rectangle function.}
+
+\subsubsection*{Calculating the integral}
+We can't put it off any longer!  It's time to compute the Fourier
+transform of something.  
+
+Let's start at the very beginning, with $\cos(\omega t)$:
+
+\begin{equation}
+\begin{split}
+\text{Recall}~~\cos(\omega_c t) &= \frac{1}{2}[\exp(j\omega_c t)+\exp(-j\omega_c t)]\\
+G(\omega) =& \int^{\infty}_{-\infty}\cos(\omega_c t)\exp(-j\omega t)~dt\\
+=& \int^{\infty}_{-\infty}\frac{1}{2}[\exp(j\omega_c t)+\exp(-j\omega_c
+t)]\exp(-j\omega t)~dt\\
+=& 2\pi\frac{1}{2}\int^{\infty}_{-\infty}\exp(j\omega_c t)\exp(-j\omega
+t)~dt + 2\pi\frac{1}{2}\int^{\infty}_{-\infty}\exp(-j\omega_c t)\exp(-j\omega
+t)~dt\\
+=& 2\pi\frac{1}{2}[\delta(\omega+\omega_c)+\delta(\omega-\omega_c)] = 
+ \pi[\delta(\omega+\omega_c)+\delta(\omega-\omega_c)]
+\end{split}
+\end{equation}
+
+In this solution, we introduced an important function known as the
+\textit{delta} function:\\
+$\delta(x) = 1 \text { for } x=0, ~~0$ otherwise.
+
+The orthogonality principle is at work here, in that the Fourier
+integrals above are zero except at the frequencies $\exp(j\omega_c t)$
+and $\exp(-j\omega_c t)$.
+
+\textbf{But wait! The original signal seems to only have \textit{one} frequency
+component in it, namely $\cos(\omega t)$, but the Fourier transform
+has \textit{two}.  What's going on?}
+
+\begin{itemize}
+\item The original signal is a solely real signal, while
+the basis functions of the Fourier transform are complex-valued.
+
+\item To construct a solely-real signal, we have to take two complex
+exponentials of equal frequency and magnitude but opposite phase and
+add them together such at their imaginary parts \textit{cancel out}.
+\end{itemize}
+
+In light of this, we see Euler's cosine identity with a whole new perspective:
+\begin{equation*}
+\cos \omega t = \frac{e^{j \omega t} + e^{-j \omega t}}{2}
+\end{equation*}
+
+\begin{figure*}[ht]
+\centering
+\epsfxsize=5.0in
+\epsfbox{cos_ft.eps}
+\caption{The Fourier transform of $\cos(\omega t)$ in magnitude and phase.}
+\label{fig:cos_ft}
+\end{figure*}
+
+Some observations: 
+\begin{itemize}
+\item $e^{j \omega t}$ and $e^{-j \omega t}$ are both phasors, rotating
+counter-clockwise and clockwise. 
+\item The frequency domain is divided into
+both signs of the exponent, referred to as the positive and negative
+frequencies. 
+\item There is one unique frequency that is neither positive nor
+negative at $\omega
+= 0$, corresponding to the constant mean value of the signal.  
+\item This is typically
+referred to as the ``DC'' component even though the signals involved are often not
+current signals.
+\end{itemize}
+
+Let's move to the next logical choice of a fundamental function, with $\sin(\omega t)$:
+\begin{equation}
+\begin{split}
+G(\omega) =& \int^{\infty}_{-\infty}\sin(\omega_c t)\exp(-j\omega t)~dt\\
+=& \int^{\infty}_{-\infty}\frac{1}{2j}[\exp(j\omega_c t)-\exp(-j\omega_c
+t)]\exp(-j\omega t)~dt\\
+=& 2\pi\frac{1}{2j}\int^{\infty}_{-\infty}\exp(j\omega_c t)\exp(-j\omega
+t)~dt - 2\pi\frac{1}{2j}\int^{\infty}_{-\infty}\exp(-j\omega_c t)\exp(-j\omega
+t)~dt\\
+=& 2\pi\frac{1}{2j}[\delta(\omega-\omega_c)-\delta(\omega+\omega_c)] =
+\frac{\pi}{j}[\delta(\omega-\omega_c)-\delta(\omega+\omega_c)]
+\end{split}
+\end{equation}
+
+Once again, we can relate this result to one of Euler's identities,
+this time for sine:
+
+\begin{equation*}
+\sin \omega t = \frac{e^{j \omega t} - e^{-j \omega t}}{2j}
+\end{equation*}
+
+This result is the same as for cosine in magnitude, but different in
+phase.  
+
+This makes intuitive sense, because the only difference between a sine
+wave and a cosine wave of the same frequency and amplitude is their
+\textit{phase}.
+
+%\begin{figure}[ht]
+%\centering
+%\epsfxsize=5.0in
+%\epsfbox{sin_ft.eps}
+%\caption{The Fourier transform of $\sin(\omega t)$ in magnitude and phase.}
+%\label{fig:sin_ft}
+%\end{figure}
+
+Let's consider the transform of the \textit{rectangle} function, defined
+as $x/2$ for $|x|<1$:
+\begin{equation}
+\begin{split}
+G(\omega) =& \int^{\infty}_{-\infty}\text{rect}(t)\exp(-j\omega t)~dt\\
+=& \frac{1}{2}\int^{1}_{-1}\exp(-j\omega t)~dt = 
+\frac{\exp(-j\omega t)}{-j\omega}\mid^{1}_{-1}\\
+=& \frac{\exp(-j\omega)-\exp(j\omega)}{-j2\omega}\\
+=& \frac{\sin\omega}{\omega}
+\end{split}
+\end{equation}
+
+This result is known as the $sinc$ function, where $sinc(\omega) =  \frac{\sin\omega}{\omega}$.
+
+\textit{As in the case of the Laplace transform, the Fourier
+transforms of many fundamental functions are listed in reference tables.}
+
+\subsubsection*{Symmetry: evenness and oddness}
+
+The cosine and sine functions exhibit a pair of properties that are
+important to understand, as they are frequently mentioned in
+discussions of the Fourier transform and its applications.
+
+The function $\cos(\omega t)$ is what is known as an \textit{even}
+function, which has form $f(t) = -f(t)$. An even function is thus
+\textit{symmetric} about the origin.
+
+The function $\sin(\omega t)$ is what is known as an \textit{odd}
+function, which has form $f(t) = -f(-t)$. An even function is thus
+\textit{anti-symmetric} about the origin.
+
+\subsection*{Fourier series}
+
+A function and it Fourier transform solution constitute a Fourier
+transform \textit{pair.}
+
+Before considering more Fourier transform pairs, lets consider a
+special case of the transform, which is that for periodic signals of
+finite power, and which produces a \textit{Fourier series}.
+
+A periodic signal of period $T$ has form $f(t+nT) = f(t)$, $n$ an integer.  
+
+\begin{itemize}
+\item It turns out that a periodic signal of finite power can be decomposed
+into what is known as a \textit{harmonic series}.
+\item This is the weighted
+combination of a orthogonal signals with the same period, beginning
+with the \textit{fundamental} frequency and integer multiples of this frequency
+known as the \textit{harmonics}.
+
+\item Thus, a repetitive or periodic signal will have a discrete frequency
+spectrum.
+
+\item (Note that sometimes the fundamental is called the \textit{first harmonic}.
+This is just a convention, like calling the ground floor of a building
+the first floor.)
+
+\item For such signals, the Fourier integral can be calculated over a single
+period of the signal rather than over all time.
+
+\end{itemize}
+
+Signals $g(t)$ and $f(t)$, each with period $T$, are orthogonal if
+\begin{equation*}
+\int^{T/2}_{-T/2}f(t)g(t)dt = 0
+\end{equation*}
+
+The Fourier series decomposition of the signal $f(t)$ has the form:
+\begin{equation*}
+f(t) = a_{0}/2 + \sum^{\infty}_{n=1}[a_{n}\cos(n\omega_{0}t)+b_{n}\sin(n\omega_{0}t)]
+\end{equation*}
+
+This weighted combination of sines and cosines is governed by the coefficients
+$a_{n}$ and $b_{n}$, calculated with integrals similar to the Fourier integral:
+\begin{equation*}
+\begin{split}
+a_{n}&=\frac{2}{T_{0}}\int^{T/2}_{-T/2}f(t)\cos(n\omega_{0}t)dt\\
+b_{n}&=\frac{2}{T_{0}}\int^{T/2}_{-T/2}f(t)\sin(n\omega_{0}t)dt
+\end{split}
+\end{equation*}
+
+\begin{itemize}
+\item $a_{0}/2 =$  the mean, or ``DC,'' component of signal. $\omega_{0} = 0$ at DC.
+
+\item Even signals comprise cosine terms only ($b_{n}=0$ for all $n$).
+
+\item Odd signals comprise sine terms only ($a_{n}=0$ for all $n$).
+\end{itemize}
+
+If you can determine the coefficients of a Fourier series
+representation of the signal, the magnitude-squared value of these
+coefficients indicates the energy associated with each discrete
+frequency component in the series.
+
+Note that the spectrum of periodic signals is always discrete!
+
+Let's calculate the Fourier series solution for a square wave:
+\begin{equation*}
+\begin{split}
+f(t+nT) & =  -1 \text{ for } T/2 < t \le 0, 1 \text{ for }0<t\le T/2\\
+a_{n}&=-\frac{2}{T_{0}}\int^{0}_{-T/2}\cos(n\omega_{0}t)dt+\frac{2}{T_{0}}\int^{T/2}_{0}\cos(n\omega_{0}t)dt\\
+b_{n}&=-\frac{2}{T_{0}}\int^{0}_{-T/2}\sin(n\omega_{0}t)dt+\frac{2}{T_{0}}\int^{T/2}_{0}\sin(n\omega_{0}t)dt\\
+a_{n}&= 0 \text{ by inspection for cosine, an even function,}\\
+b_{n}&=\frac{4}{T_{0}}\int^{T/2}_{0}\sin(n\omega_{0}t)dt\text{ by inspection for sine, an odd function,}\\
+b_{n}&=-\frac{4}{nT_{0}\omega_{0}}\cos(n\omega_{0}t)\mid^{T/2}_{0}\\
+b_{n}&=-\frac{4}{nT_{0}\omega_{0}}\bigg{(}\cos(n\omega_{0}T/2)-1\bigg{)}\\
+b_{n}&= 0 \text{ for even integer n,}\\
+b_{n}&= \frac{8}{nT_{0}\omega_{0}} \text{ for odd integer n,}\\
+f(t)&=\sum^{\infty}_{n=1,3,5...}\frac{8}{nT_{0}\omega_{0}}=\sum^{\infty}_{n=1,3,5...}\frac{4}{n\pi}\text{
+since }\omega_{0}=\frac{2\pi}{T_{0}}\\
+\end{split}
+\end{equation*}
+One observes that a square wave is the sum of the odd integer sine harmonics.
+
+This results is illustrated in Figure~\ref{fig:square_fs}.
+
+A certain degree of overshoot is evident in the reconstruction.  This
+is present even for a sum of a large number of harmonics, and is known as \textit{Gibb's phenomenon.}
+
+\begin{figure}[ht]
+\centering
+\epsfxsize=6.0in
+\epsfbox{square_fs.eps}
+\caption{The Fourier series deconstruction of a square wave is illustrated, with
+sine component amplitudes (the function's \textit{discrete magnitude
+spectrum}) shown in the top figure and series sums over
+time shown for $n = 1$, $n = [1:5]$, and $n=[1:35]$.}  
+\label{fig:square_fs}
+\end{figure}
+
+Let's consider the Fourier series solution of a sequence of delta
+functions known as the \textit{comb} function:
+\begin{equation*}
+\begin{split}
+f(t) & = comb(t) = \sum^{\infty}_{n=-\infty}\delta(t-n\tau)\\
+a_{n}&=\frac{2}{T_{0}}\cos(0)=\frac{2}{T_{0}}\\
+f(t)&=\frac{1}{T_{0}}+\sum^{\infty}_{n=-\infty}\frac{2}{T_{0}}\cos
+n\omega_{0}t\\
+\omega_{0}&=\frac{2\pi}{T_{0}}\\
+\therefore F(\omega)& = \frac{2\pi}{T_{0}}comb(\omega)
+\end{split}
+\end{equation*}
+
+Thus, the Fourier transform of a $comb$ is a $comb$!
+\begin{itemize}
+\item Multiplication of a signal by the $comb$ function is used to represent
+the sampling operation of analog to digital conversion.
+\item We will find that the digitally sampled signal will have a periodic spectrum.
+\item A general observation is that sampling in one of domain produces
+periodicity in the other domain.
+\end{itemize}
+
+\subsection*{Fourier transform pairs}
+
+\begin{equation*}
+\begin{split}
+f(t) = A\cos(\omega_c t) &\Longleftrightarrow F(\omega) = A\pi[\delta(\omega-\omega_c)+\delta(\omega+\omega_c)]\\
+f(t) = A\sin(\omega_c t)&\Longleftrightarrow F(\omega) = \frac{A\pi}{j}[\delta(\omega-\omega_c)-\delta(\omega+\omega_c)]\\
+f(t) = rect(t) &\Longleftrightarrow F(\omega) =
+\frac{\sin\omega}{\omega} = sinc(\omega)\\
+f(t) = A &\Longleftrightarrow F(\omega) = 2\pi A\delta(\omega)\\
+f(t) = \delta(t-t_0) &\Longleftrightarrow F(\omega) = \exp(-j\omega
+t_0),~ = 1 \text{ for } t_0 = 0.
+\end{split}
+\end{equation*}
+
+%----------------------------------
+\subsection*{Properties of the Fourier transform}
+
+Extensive tables of Fourier transform \textit{pairs} exist showing
+fundamental functions and their transforms.
+
+The Fourier transform exhibits a series of properties that can greatly
+simplify analysis.  These properties also allow \textit{extension} of the
+fundamental transform pairs by generalization.
+
+Given $f(t)$ and its Fourier transform $F(\omega)$:
+
+\begin{equation*}
+\begin{split}
+\text{Scaling:}~~f(at)~~&\Longleftrightarrow~~\frac{1}{|a|}F\bigg{(}\frac{\omega}{a}\bigg{)}\\
+\text{Superposition:}~~af(t)+bg(t)~~&\Longleftrightarrow~~aF(\omega)+bG(\omega)\\
+\text{Translation~/~shift:}~~f(t-t_0)~~&\Longleftrightarrow~~\exp\big{(}-j\omega
+t_0\big{)}F(\omega)\\
+\text{Convolution:}~~f(t)\ast
+g(t)~~&\Longleftrightarrow~~F(\omega)~G(\omega)\\
+\text{Autocorrelation:}~~f(t)\ast
+f^\ast(-t)~~&\Longleftrightarrow~~|F(\omega)^2|\\
+\text{Cross-correlation:}~~f(t)\ast
+g^\ast(-t)~~&\Longleftrightarrow~~F(\omega)~G^{\ast}(\omega)\\
+\\
+\text{Power (Parseval's Theorem):}~~\int^{\infty}_{-\infty}f(t)g^{\ast}(t)~dx~~&=~~
+\int^{\infty}_{-\infty}F(\omega)~G^{\ast}(\omega)~d\omega
+\end{split}
+%\label{}
+\end{equation*}
+
+Note that the scaling property has an amplitude term $1/|a|$ out
+front.  \textit{For reasons beyond the scope of this discussion, this
+factor is only included for functions having finite energy, such as a
+square pulse.}
+
+This amplitude scaling  does not apply to periodic signals.  Thus the
+Fourier transform of $\cos(2\omega_0 t) = \pi[\delta(\omega +
+2\omega_0) + \delta(\omega - 2\omega_0)]$, not $\pi/2[\delta(\omega +
+2\omega_0) + \delta(\omega - 2\omega_0)]$.
+
+
+\end{document}
