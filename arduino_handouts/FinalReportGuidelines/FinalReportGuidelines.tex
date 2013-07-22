@@ -1,0 +1,86 @@
+\documentclass[10pt]{report}
+\usepackage{epsf}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{palatino}
+\usepackage[dvips]{graphics}
+\usepackage{fancyhdr}
+\usepackage{epsfig}
+\usepackage{multirow}
+\usepackage{cancel}
+\parindent 0in
+\parskip 1ex
+\oddsidemargin  0in
+\evensidemargin 0in
+\textheight 8.5in
+\textwidth 6.5in
+\topmargin -0.25in
+
+\pagestyle{fancy}
+\fancyhead[LO]{\bf BME354L - Palmeri - Spring 2013}
+\fancyhead[RO]{{\bf Arduino Project: Final Report Guidelines}}
+
+\begin{document}
+
+After completing the basic Arduino tutorials, the LCD \& Control System lab
+exercises, and reviewing the functional specifications of your final Arduino
+surface mount reflow oven specification in the Reflow Tutorial, you should have
+demonstrated the function of your Arduino-based reflow oven controller using
+the thermocouple and heater setup provided by Dr. Palmeri\footnote{Designed and
+constructed by Will Scheideler, Oliver Fang, and Matt Brown.}.  After
+successfully demonstrating the function and features of your device, you are
+expected to submit a single, formal written report for your group that builds
+upon all of the lab report experience you have gained throughout the semester.
+Your final report will also function as a user manual and troubleshooting
+guide.  Please be sure to include the items below in your final report; these
+are the minimum expectations, and additional items can be included as you feel
+appropriate.
+
+\begin{itemize}
+
+  \item Introduction: provide an overview of the function of a reflow oven, and
+    the functional need for your Arduino microcontroller in this project
+
+  \item Background: provide factual information about any of the pieces of this
+    project that would be useful for the reader to know to interpret items
+    later in your report
+
+  \item Materials \& Methods: provide an overview of the materials and methods
+    used in this project.  Please include information about the thermocouple
+    stage (including linearizing circuit) and the SSR / heater stage that is
+    appropriate from the context of interfacing with your Arduino
+    microcontroller.  You can reference all of your Arduino code in an
+    appendix.  It may be useful to include flow charts of your code structure,
+    your overall device function, and your user interface.
+
+    \item Results: provide an overview of how well your device performed in the
+      context of the project demonstration
+
+    \item Discussion: provide a discussion of your overall approach, and in
+      hindsight, critical analysis of anything that you would change to better
+      meet the functional specifications of your device.  Also highlight any
+      significant learning points for your group during the development of the
+      functional microcontroller.  If you used GitHub for your project code
+      management, then please comment on your collective group experience using
+      this version control software tool.\footnote{Negative feedback will not
+      be held against you!}
+
+    \item Conclusions
+
+    \item Appendices
+      \begin{itemize}
+            \item Arduino microcontroller code, {\bf commented}.  Please include a URL to your GitHub repository if one was utilized throughout the project.
+            \item Simple user manual: if someone were to turn on the reflow
+              oven with your code already uploaded to the microcontroller, then
+              how would they use the device
+            \item Troubleshooting guide: if you know that your microcontroller code has quirks, then please provide a Troubleshooting table of common problems and how to remedy them (if they can be remedied by the end user)
+      \end{itemize}
+
+\end{itemize}
+
+As a general tip when preparing this report, \emph{well-done} figures, flow
+charts and tables can be used to effectively replace pages of text.  Please be
+sure to include all references to sources utilized throughout your project
+development and analysis.
+
+\end{document}
