@@ -1,0 +1,8 @@
+Stopwatch code for the Arduino Lab 1 exercise, originally written by Oliver
+Fang and modified by me to demonstrate some different functionality.  This code
+utilizes the millis() function to clock elapsed time.  Multiple *.ino files in
+this directory are used to demonstrate some modular code writing functionality.
+
+Mark Palmeri
+mlp6@duke.edu
+2013-04-21
