@@ -1,0 +1,87 @@
+\input{preamble}
+
+\begin{document}
+\section*{Problem Set \#2: Amplifiers and Comparators}
+
+\textbf{DUE:} Friday, 2013-01-31 at 5:00 PM in the grader box
+
+\begin{enumerate}
+
+\item {\bf Instrumentation Amplifier} A graduate student at Duke is working on
+    measuring axon action potentials that range in voltage from -100 mV to +50
+    mV.  This student needs to amplify these signals before feeding them into
+    additional signal processing equipment that will quantify the time
+    constants associated with the axon firing.  Design a three-op-amp
+    differential amplifier (i.e., an instrumentation amplifier) that has a
+    differential gain of 5 in the first (buffering) stage and a differential
+    gain of 6 in the second (diff amp) stage.  Clearly draw your circuit with
+    all of the circuit elements and their values clearly labeled. \\
+
+    Based on the specified range of the input signal, what are the minimum
+    limits of the rail voltages of each op-amp to insure that the cumulative
+    output of the amplifier remains in the linear range?\\
+
+\item {\bf Summing Amplifier} Ultrasound transducers are composed of many
+    different piezoelectric elements, each of which is independently controlled
+    electronically.  In addition to using that electrical independence to focus
+    the sound waves, it can also be used to control the amplitude of the sound
+    wave sent and received from each element.  Controlling these element
+    amplitudes can be used to apodize the acoustic aperture to reduce side
+    lobes of the focused sound wave, increasing the system's spatial
+    resolution.  This side lobe reduction is achieved by reducing the received
+    voltage amplitudes of the elements on the ends of the aperture relative to
+    the center elements before they are summed together.  For a 5 element
+    ultrasound transducer ($E_{1-5}$), design a summing amplifier so that two
+    elements ($E_{2,4}$) adjacent to the center element ($E_3$) are 85\% the
+    center element's amplitude, and the outer elements ($E_{1,5}$) are 25\% the
+    center elements excitation voltage (i.e., $v_o = v_{E_3} + 0.85 v_{E_2} +
+    0.85 v_{E_4} + 0.25 v_{E_1} + 0.25 v_{E_5}$).\\
+
+\item {\bf Comparator} Design a comparator with a hysteresis range from 0 to +2
+    V.  Make sure that you indicate the value of $V_{ref}$.  Assume that the
+    rail voltages of the op-amp are $\pm$ 13 V.\\
+
+    Sketch the output of your comparator over three wavelengths of an input
+    signal $v_{in}$ = 4 $\sin(\omega t + \pi/4)$, for a frequency of 125.66
+    rad/s (20 Hz), starting at $t$ = 0.  (Sketch the output and input on the
+    same set of axes.) \\
+
+\item {\bf Design: Pulmonary Hypertension Alarm} An anesthesia monitoring
+    system is measuring the pressure output from a Swan-Ganz pulmonary artery
+    catheter to evaluate pulmonary hypertension intraoperatively.  Since the
+    anesthesiologist is also monitoring several other physiologic systems
+    concurrently (e.g., ECG, EEG, respiratory rate, blood pressure, etc.), the
+    pressure monitor sounds an alarm when the pressure goes too high or too
+    low.  The pressure output of the catheter, ranging from 0 - 100 mm Hg, is
+    linearly mapped to voltage through its transduction mechanism to be 0 - 10
+    V.  Design a circuit using a comparator that will sound the alarm when the
+    pressure rises above 25 mmHg.  Assume that the pressure catheter signal has
+    a noise component of $\pm$ 0.1 mmHg; your comparator should have a
+    hysteresis range that is twice this noise limit.  Let your input signal to
+    the circuit from the pressure catheter be represented as $v_{in}$.  Use DC
+    power sources as needed in your circuit design, and specify the rail
+    voltage(s) for the op-amp(s).  The alarm can be considered a ``black box''
+    load that can be activated with a voltage greater than 5 V ($v_o >$ 5 V).\\
+
+\item {\bf More Design: Low \& High} Using a second comparator, modify your
+    circuit in the previous problem so that the alarm will sound when the
+    pressure rises about 25 mmHg or falls below 10 mmHg.  You want to use the
+    same alarm for both conditions, so you will need to use another type of
+    circuit component we discussed in class to combine the outputs of the two
+    comparators to drive the alarm. \\
+
+\item {\bf Rechargeable, battery-powered devices} are becoming more ubiquitous
+    in the medical setting.  Compare/contrast these four types of rechargeable
+    batteries in terms of energy density, output voltage, battery life,
+    recharge time, and weight: (1) lead acid, (2) NiCad, (3) NIMH, and (4)
+    Li-ion.
+
+    Li-ion batteries have become very common in cell phones, digital cameras,
+    laptop computers, and many other portable electronic devices.
+    Unfortunately, there is also a non-negligible fire risk associated with
+    these devices.  What is responsible for this fire risk, and what safeguards
+    do modern versions of these batteries utilize?
+
+\end{enumerate}
+
+\end{document}
