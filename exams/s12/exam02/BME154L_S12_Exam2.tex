@@ -1,0 +1,25 @@
+\documentclass[12pt]{article}
+\usepackage{fancyhdr,epsfig,graphics,tabularx,times}
+\pagestyle{empty}
+\topmargin=-0.75in
+\oddsidemargin=-0.5in
+\textwidth=7.5in
+\textheight=9.5in
+\parindent=0.0in
+\parskip=10pt
+\linespread{1.0}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\def\thesection{Problem \#\arabic{section}}
+
+\begin{document}
+\input{coverpage}
+
+\clearpage
+
+\input{adc_dac_half_wave_rect}
+
+\input{second_order}
+
+\end{document}
