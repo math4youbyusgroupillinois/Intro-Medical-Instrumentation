@@ -1,0 +1,102 @@
+\documentclass[10pt]{report}
+\usepackage{epsf}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{palatino}
+\usepackage[dvips]{graphics}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\parindent 0in
+\parskip 1ex
+\oddsidemargin  0in
+\evensidemargin 0in
+\textheight 8.5in
+\textwidth 6.5in
+\topmargin -0.25in
+
+\pagestyle{fancy}
+\fancyhead[LO]{\bf BME154L - Palmeri - Spring 2011}
+\fancyhead[RO]{\bf Exam \#2 Topics}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+{\bf Topics to Review:} The following topics are fair game on the second exam.
+Remember, you are allowed to bring a review sheet to the exam that fills one
+side of an 8.5x11'' piece of paper.  Also remember to bring a calculator.
+
+\begin{itemize}
+\item First exam topics (not to the same level of detail, but you should still
+remember how to analyze and design circuits).
+\item Input/output impedance (too many people missed this on the first exam)
+\item Signal Processing
+\begin{itemize}
+    \item SNR
+    \item Noise (types, frequency characteristics)
+    \item Noise reduction approaches
+    \begin{itemize}
+        \item Filtering
+        \item Coherent temporal averaging
+        \item Non-running, running and exponential averagers
+        \item Theoretical SNR improvements
+        \item Block diagrams describing averaging algorithms
+        \item Correlation
+    \end{itemize}
+    \item Frequency-domain Analysis
+    \begin{itemize}
+        \item Fourier transform pairs for ``common'' functions, including delta functions, rects, sinusoids, combs, Gaussians, etc.
+        \item General properties of the Fourier Transform, including those outlined in the lecture handout
+    \end{itemize}
+    \item Convolution
+    \item Auto- and Cross-Correlation (properties of, how to perform the operation, why it is useful, etc.)
+\end{itemize}
+\item Digital Electronics
+\begin{itemize}
+    \item Digital logic gates
+    \item Combinatorial and sequential logic
+    \item SR, D and JK flip flops
+    \item Registers, latches, counters and timing diagrams
+    \item Binary numbers
+    \item Analog $\rightarrow$ Digital
+    \begin{itemize}
+        \item Bit resolution
+        \item Sampling rates and aliasing
+        \item Flash ADC
+        \item Successive Approximation ADC
+        \item Single-Slope Integration ADC 
+    \end{itemize}
+    \item Digital $\rightarrow$ Analog
+    \begin{itemize}
+        \item Resolution
+        \item Scaled-resistors into summing amplifier
+        \item R-2R Ladder
+    \end{itemize}
+\end{itemize}
+\item Cardiovascular System
+\begin{itemize}
+    \item Heart and vascular anatomy; conduction anatomy
+    \item ECG signal
+    \begin{itemize}
+        \item What does it represent electrically?
+        \item How is it measured?
+        \begin{itemize}
+            \item Eindhoven's triangle
+            \item Wilson's Central Terminal
+            \item $>$ 3-lead configurations
+        \end{itemize}
+        \item How does it related to other physiologic processes (e.g., contraction, blood pressure, etc.)
+        \item Sources of noise and methods of minimization / compensation
+    \end{itemize}
+    \item Heart conduction abnormalities (what they are and how they manifest themselves in measurement systems)
+    \item Arrhythmias (what they are, how to diagnose, how to treat)
+    \item Pacemakers
+    \end{itemize}
+\end{itemize}
+
+{\bf Types of questions to expect:}  This exam will be different from the
+first exam.  Expect questions that focus on block diagram design, understanding
+the physiologic systems mentioned above in the context of characterizing them
+(which includes knowing some factual information about them), and biosignal
+processing.  You will be asked to evaluate a circuit in terms of what it does in
+the context of making a measurement.
+
+\end{document}
