@@ -1,0 +1,24 @@
+\item {\bf Exponentially-Weighted Averager} An exponentially-weighted averager
+  that produces an output signal that is a weighted sum of a series of input
+  signals described by:
+
+  \begin{center}
+$S_{o} = \frac{1}{m}\left[S_n + \left(\frac{m-1}{m}\right)S_{n-1}+\left(\frac{m-1}{m}\right)^2S_{n-2} + \ldots\right],$
+  \end{center}
+  
+where $m$ is the exponential weighting factor.
+  
+\begin{enumerate}
+    \item Demonstrate how $m$ affects the weighting of more recent or later samples in the exponential averager.  You can do this numerically, and not analytically.
+    %\item We derived the SNR improvement associated with an equally-weighted and boxcar averager to be $\sqrt{N}$, where $N$ is the number of samples being averaged.  Derive the SNR improvement for the exponentially-weighted averager (hint - it should be a function of $m$). [1 point]
+    \item We discussed in lecture how the boxcar averager acted as a low-pass
+        filter on the data.  Sketch the transfer function of the boxcar
+        averager relative to a sinusoidal signal oscillating at $\omega_o$, and
+        demonstrate how if the averaging window is too long, then you are just
+        left with the DC offset of the sinusoidal signal in the output. 
+
+    \item Compare and contrast the frequency-domain transfer function of a
+        boxcar averager with that of an exponentially-weighted averager.  How
+        does the transfer function of the exponentially-weighted averager
+        change as a function of $m$?
+\end{enumerate}

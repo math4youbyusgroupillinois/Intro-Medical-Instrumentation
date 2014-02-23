@@ -1,0 +1,32 @@
+\input{preamble}
+
+\begin{document}
+\section*{Problem Set \#4: Boxcar and Exponentially-weighted Averagers}
+
+\textbf{DUE:} Friday, 2014-02-28 at 5:00 PM \textbf{as a Sakai assignment attachment}
+
+\begin{enumerate}
+
+\input{boxcar_averager/boxcar_averager}
+
+\input{exp_weight_averager/exp_weight_averager}
+
+\item \textbf{Arduino Implementation of Averagers}
+    \begin{enumerate}
+        \item Build an Arduino-controlled circuit that modulates the brightness
+            of an LED with a sine wave that has a 5 s period.
+        \item Add noise to your sinusoid using \verb+random()+ to achieve an
+            SNR of 6 dB.
+        \item Run your code with the noisy sinusiod and note the difference in
+            your LED illumination.
+        \item Implement a boxcar averager in your Arduino code to filter the
+            noise sinusoid to illuminate the LED more like the pure sinusoid.
+        \item Include in your code comments your analysis / reasoning for
+            choosing the size of your boxcar.
+        \item Submit your functioning code as part of your attachment to the
+            Sakai assignment.
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
