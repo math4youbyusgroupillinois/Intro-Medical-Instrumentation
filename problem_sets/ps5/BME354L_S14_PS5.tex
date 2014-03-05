@@ -1,0 +1,63 @@
+\input{preamble}
+
+\begin{document}
+\section*{Problem Set \#5: Quadrature \& Phase Demodulation}
+
+\textbf{DUE:} Wednesday, 2014-03-19 at 5:00 PM \textbf{as a Sakai assignment
+    attachment}.  Attach all code used to implement your algorithms and
+    generate your plots!
+
+\begin{enumerate}
+
+\item \textbf{Quadrature Demodulation}
+
+    We introduced the RLC divider in PS 3 as a circuit to detect changes in capacitance.  Referring to the RLC circuit in PS 3,
+
+    \begin{enumerate}
+        \item Plot several cycles of an input sinusoid at a frequency of 1000
+            krad/s with a peak-to-peak amplitude of $\pm$ 2 V.  Plot the output
+            signals from your RLC divider for capacitances of 0.95 nF and 1.05
+            nF ($\pm$ 0.05 nF from the notch of the divider) on the same plot.
+
+        \item Express each output signal in decibels relative to the input
+            amplitude.
+
+        \item Plot 10 cycles of an input sinusoid signal that linearly
+            increases in amplitude from $\pm$ 2 V to $\pm$ 4 V over 10 cycles.  
+            Plot the same output signals as in (a) for this input signal.
+
+        \item Using the quadrature demodulation algorithm presented in lecture,
+            plot the in-phase (I) and quadrature (Q) signals of each output
+            signal from (c) on the same plot, with a separate plot for each
+            output signal.  Add a third line to each plot that represents the
+            envelope of the output signal, as computed from I and Q.
+
+    \end{enumerate}
+
+\item \textbf{Phase Demodulation}
+
+    Problem 1 should convey the fact that the magnitude of the amplitude is
+    related to the capacitance change, but this quantity does delineate if the
+    capacitance has increased or decreased relative to the notch capacitance.
+    The sign of the phase of the output signal relative to the input signal
+    will indicate this increase / decrease.
+
+    \begin{enumerate}
+        \item Using the phase demodulation present in lecture, calculate the
+            sign of the relative phase of the output compared to the input
+            signal for each capacitance change in Problem 1(a).  
+            
+        \item Your algorithm in 2(a) should have included low pass filter,
+            which you could have implemented numerically with an algorithm of
+            your choice.  Plot the output of your phase demodulator before and
+            after this low pass filtering operation and comment on the
+            effectiveness of its performance.
+
+        \item Plot the phase change for each output signal for the linear
+            amplitude change in the input signal in Problem 1(c).   Comment on
+            this plot.
+
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
