@@ -1,0 +1,23 @@
+\item {\bf Binary Search Algorithms / Successive Approximation ADC}
+
+The successive approximation ADC that we covered in lecture uses a binary search algorithm to determine the most accurate binary representation of a base-10 number.  Write a Matlab function that does the following:
+
+\begin{itemize}
+    \item Accepts input arguments of:
+    \begin{itemize}
+        \item Base-10 number to approximate with a binary number
+        \item Number of bits in binary representation
+        \item Minimum base-10 number to represent
+        \item Maximum base-10 number to represent
+    \end{itemize}
+
+    \item Outputs your binary number and generates a plot of the approximations that it makes with each iteration of the binary search (both the binary and the base-10 equivalents; think of using {\tt plotyy} in Matlab).
+\end{itemize}
+
+Use you binary search algorithm that you wrote for the following problem.  An EMG experiment records the number of fasciculations of the eye lid that occur overnight.  It is expected that between 10,000 and 10,000,000 discrete events will be recorded, with a precision of $\pm$ 1000 discrete events.
+
+\begin{itemize}
+    \item Determine the fewest number of bits that you need to represent your final event count from the experiment as a binary number.
+    \item Generate a plot of the approximations that a successive approximation ADC would make estimating this final event count using your Matlab function.
+    \item For your chosen bit depth, your least significant bit (LSB) corresponds to how many ``events''?
+\end{itemize}

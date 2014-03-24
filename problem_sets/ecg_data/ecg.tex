@@ -1,0 +1,105 @@
+\item {\bf Canine ECG Data} 
+
+We have finally reached the point in the
+course where we can start working with some real biosignals!  Working with real
+signals means that we no longer have ``simple'' analytic expressions to
+represent our input signals... so we are going to rely on numerical methods to
+evaluate our signals.  Be sure to include all of your code for this problem.
+
+The first signal that we will be working with is an ECG trace from a canine
+cardiac study.  The dog had undergone several radiofrequency ablations before
+this trace was acquired, and it experienced some degree of myocardial ischemia
+(i.e., this is not a normal ECG trace).  The ECG data (\verb+ecg+) is in
+millivolts, and the time variable (\verb+t+) is in seconds.
+
+\begin{enumerate}
+\item Download \verb+BME354L_CANINE_ECG.mat+ from Sakai.
+
+\item Load \verb+BME354L_CANINE_ECG.mat+ into your Matlab workspace.
+
+\item Plot the ECG signal as a function of time, with the axes properly labeled
+with units.  Print this plot out to turn in with your problem set.
+
+\item What is the range of voltages for the ECG signal?  What is the
+approximate voltage range for the noise?\footnote{There are several different
+ways that you can quantify these values that are equally valid but may provide
+different values.  Clearly state/show the way that you estimated these values.}
+
+\item What is the minimum number of bits that we need to accurately represent
+the data?  What was the approximate SNR for this ECG trace?
+
+\item What should the voltage of the least-significant-bit (LSB) be set to in
+your ADC? 
+
+\item What is the sampling frequency ($f_s$) for these data? 
+
+%\item Implement a sliding window averager to improve the SNR of the ECG data.
+%Plot the (reduction in) noise (just the noise, not the entire ECG signal) as a
+%function of 5 different window sizes.  Again, include your code with your
+%plots.
+
+\item Generate a plot clearly showing the frequency content of this ECG data trace. There are
+several ways to do this in Matlab; the most direct way involves using the
+\verb+fft+ and \verb+fftshift+ commands.\footnote{If you need
+to brush up on your FFT background from BME171, then there is a great online
+reference: \url{http://www.dspguide.com/}; the chapters are freely available
+online.} 
+
+\item Next, we're going to manually downsample the data to qualitatively get a
+feel for what minimum sampling frequency can be to still accurately represent
+the morphology of the ECG signal.  Downsample the ECG data (and the time data)
+by factors of 10, 50, 100, 200, 500, and 1000.  You can do this in Matlab by
+skipping data points (e.g., you can create a vector of every tenth sample in
+the ECG signal using the syntax \verb+ecg(1:10:end)+).
+
+Generate plots comparing these waveforms (zoom in on just one of the wave
+complexes) and notice the aliasing / signal corruption that occurs when the
+waveform is undersampled.  Print these plots to hand in with your problem set
+(you can put them all on the same plot as long as you use different line styles
+to distinguish them; the \verb+subplot+ command can also be used to save
+space/pages). 
+
+\item Generate plots of the frequency content of these downsampled ECG data
+traces and comment on what you expected these to look like relative to the
+original signal and if your plots match your intuition. 
+
+\item Using this manual technique to visually evaluate the effects of aliasing,
+what is the minimum sampling frequency that could be used to adequately
+represent these data digitally?  What does this imply about the maximum
+frequency content of the ECG signal?  How does this compare with the Nyquist
+limit that you would have chosen based on your power spectrum from Problem Set
+\#6? 
+
+\item How much greater than this minimum sampling frequency was the data
+acquisition sampling frequency? Is this adequate? 
+
+%    \item Using any of the techniques covered in class to reduce the noise in
+%signals (e.g., filtering, averaging), evaluate the power spectrum of your
+%``cleanest'' (i.e., highest SNR signal), which preserves all of the features of
+%the ``true'' signal, with the power spectrum of the original signal.  Comment
+%on the frequency content of these two signals relative to the sampling
+%frequency and your conclusions above with respect to the Nyquist frequency. Be
+%sure to include all of your code! [2 points]
+
+\item Many datasets in research and industry are saved as ``raw'' binary files,
+as opposed to ASCII files (too large) or proprietary formats (such as Matlab's
+\verb+*.mat+).  Download \verb+BME354L_CANINE_ECG.dat+ from Sakai; this
+data file contains a modified version of the ECG data that you had in the Matlab file.
+The data are formatted as 32-bit floating point numbers and were saved as a
+serial stream of time/voltage pairs (e.g., t1,v1,t2,v2,\ldots).  Read these data
+in Matlab or your program of choice (something that will let you perform Fast
+Fourier Transforms and cross correlations)\footnote{In addition to Matlab, you
+can also use R, Excel, LabVIEW, Maple, Mathematica, or Octave\ldots it is your
+choice.}.  In Matlab, commands that may make your life easier are \verb+fopen+,
+\verb+fseek+, \verb+fread+, and \verb+fclose+ (and yes, this is more work than
+just loading in the \verb+*.mat+ file, but much more generalized).  What are
+the differences between this ECG signal and the original Matlab signal?
+(\verb+BME354L_CANINE_ECG.mat+)?  Include your code and plots with your
+problem set. 
+
+\item Compute the power spectrum for this new ECG signal and compare/contrast
+it with the power spectrum for the original ECG signal.  What would you need to
+do to this new ECG signal to achieve the same power spectrum as the original
+ECG signal?  
+
+\end{enumerate}
