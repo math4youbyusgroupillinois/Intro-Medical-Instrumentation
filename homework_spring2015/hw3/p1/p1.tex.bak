@@ -1,0 +1,18 @@
+\input{header}
+
+{\bf Prblem 1 [20 points]:}
+For the circuit below:
+\begin{figure}[h!]
+\begin{minipage}[l]{0.85\linewidth}
+\centering
+\includegraphics[width=1.0\linewidth]{p1/p1.eps}
+\end{minipage}
+\end{figure}
+\begin{enumerate}
+\item Find the equivalent resistance seen by the source.
+\item What is the current provided by the source?
+\item What is the current through the 10 ohm resistor?
+\end{enumerate}
+
+
+\newpage
