@@ -1,20 +1,21 @@
-\documentclass[11pt]{report}
-\usepackage{epsf}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{palatino}
-\usepackage[dvips]{graphics}
-\usepackage{fancyhdr}
-\usepackage{hyperref}
-\parindent 0in
-\parskip 1ex
-\oddsidemargin  0in
-\evensidemargin 0in
-\textheight 8.5in
-\textwidth 6.5in
-\topmargin -0.25in
+%\documentclass[11pt]{report}
+%\usepackage{epsf}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{palatino}
+%\usepackage[dvips]{graphics}
+%\usepackage{fancyhdr}
+%\usepackage{hyperref}
+%\parindent 0in
+%\parskip 1ex
+%\oddsidemargin  0in
+%\evensidemargin 0in
+%\textheight 8.5in
+%\textwidth 6.5in
+%\topmargin -0.25in
 
-\input{../lecture_handout_header}
+%\input{../lecture_handout_header}
+\input{preamble}
 
 \begin{document}
 
@@ -360,7 +361,7 @@ b_{n}&=-\frac{4}{nT_{0}\omega_{0}}\cos(n\omega_{0}t)\mid^{T/2}_{0}\\
 b_{n}&=-\frac{4}{nT_{0}\omega_{0}}\bigg{(}\cos(n\omega_{0}T/2)-1\bigg{)}\\
 b_{n}&= 0 \text{ for even integer n,}\\
 b_{n}&= \frac{8}{nT_{0}\omega_{0}} \text{ for odd integer n,}\\
-f(t)&=\sum^{\infty}_{n=1,3,5...}\frac{8}{nT_{0}\omega_{0}}=\sum^{\infty}_{n=1,3,5...}\frac{4}{n\pi}\text{
+f(t)&=\sum^{\infty}_{n=1,3,5...}\frac{8}{nT_{0}\omega_{0}} sin(n\omega_{0}t)=\sum^{\infty}_{n=1,3,5...}\frac{4}{n\pi}sin(n\omega_{0}t),\text{
 since }\omega_{0}=\frac{2\pi}{T_{0}}\\
 \end{split}
 \end{equation*}
@@ -373,7 +374,7 @@ is present even for a sum of a large number of harmonics, and is known as \texti
 
 \begin{figure}[ht]
 \centering
-\epsfxsize=6.0in
+\epsfxsize=5.5in
 \epsfbox{square_fs.eps}
 \caption{The Fourier series deconstruction of a square wave is illustrated, with
 sine component amplitudes (the function's \textit{discrete magnitude

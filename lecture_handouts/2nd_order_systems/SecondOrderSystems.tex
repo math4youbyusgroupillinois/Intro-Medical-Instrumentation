@@ -1,25 +1,26 @@
-\documentclass[10pt]{report}
-\usepackage{epsf}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{palatino}
-\usepackage[dvips]{graphics}
-\usepackage{fancyhdr}
-\usepackage{epsfig}
-\usepackage{multirow}
-\usepackage{cancel}
-\parindent 0in
-\parskip 1ex
-\oddsidemargin  0in
-\evensidemargin 0in
-\textheight 8.5in
-\textwidth 6.5in
-\topmargin -0.25in
+%\documentclass[10pt]{report}
+%\usepackage{epsf}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{palatino}
+%\usepackage[dvips]{graphics}
+%\usepackage{fancyhdr}
+%\usepackage{epsfig}
+%\usepackage{multirow}
+%\usepackage{cancel}
+%\parindent 0in
+%\parskip 1ex
+%\oddsidemargin  0in
+%\evensidemargin 0in
+%\textheight 8.5in
+%\textwidth 6.5in
+%\topmargin -0.25in
 
-\input{../lecture_handout_header}
+%\input{../lecture_handout_header}
+\input{preamble}
 
 \begin{document}
-\section*{Review}
+\section*{Review - Second Order Systems}
 
  \begin{equation}
  a_2 \dfrac{d^2v(t)}{dt^2} + a_1 \dfrac{dv(t)}{dt} + a_0 v(t) = b_0 f(t)  \end{equation} \\ 
@@ -69,7 +70,8 @@ $\begin{array}{|l|l|l|}
 
 \pagebreak
 
-\section*{Lab}
+\section*{Underdamped System Response - pressure response of 'step
+excitation' of a balloon popping}
 
 {\bf Sum of 2 sinusoids at $\omega_d$ with exponential decay: }
 
@@ -85,7 +87,7 @@ $\begin{array}{|l|l|l|}
 \begin{minipage}[b]{0.5\linewidth} 
 \begin{center}
 \epsfig{file=balloonpop.eps, height = 1.25in}
-\caption{Balloon Pop}
+\caption{Balloon Pop - step excitation}
 \end{center}
 
 
@@ -93,7 +95,7 @@ $\begin{array}{|l|l|l|}
 \begin{minipage}[b]{0.5\linewidth} 
 \begin{center}
 \epsfig{file=timedomain.eps, height=1.5in}
-\caption{Time Domain}
+\caption{Time Domain - underdamped repsonse}
 \end{center}
 
 \end{minipage}
@@ -103,7 +105,7 @@ $\begin{array}{|l|l|l|}
 \begin{figure}[htb]
 \begin{center}
 \epsfig{file=freqdomain.eps,height=1.25in}
-\caption{Frequency Domain}
+\caption{Frequency Domain - underdamped response}
 \end{center}
 \end{figure}
 
